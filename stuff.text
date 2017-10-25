@@ -1,0 +1,25 @@
+
+WIKI GET REQUEST URL EXAMPLE FOR LONDON EYE
+https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=London%20Eye
+
+query.pages.{page.id}.title & query.pages.{page.id}.extract
+
+
+/////////////////////////////////////
+
+wikipedia language extensions:
+
+working 
+en english 
+fr french
+es spanish
+de german
+ru russian
+sv swedish
+it italian
+ar arabic
+pl polish
+no norwegian
+hu Hungarian
+tr turkish
+cs czech
