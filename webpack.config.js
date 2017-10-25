@@ -29,7 +29,7 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node_modules/,
         query: {
-          presets: ['react']
+          presets: ['es2015', 'react']
         }
       },
       { test: /\.css$/, loader: ['style-loader', 'css-loader'] },
