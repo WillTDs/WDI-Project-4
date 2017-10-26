@@ -15,6 +15,7 @@
     "test": "yarn test:server && yarn test:client"
   },
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "body-parser": "^1.18.1",
     "express": "^4.15.4",
     "jsonwebtoken": "^8.1.0",
@@ -23,7 +24,8 @@
     "morgan": "^1.8.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-router-dom": "^4.2.2"
+    "react-router-dom": "^4.2.2",
+    "request-promise": "^4.2.2"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
