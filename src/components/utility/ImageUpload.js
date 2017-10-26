@@ -1,18 +1,12 @@
 import React from 'react';
 
-const DragDrop = ({ onChange, value }) => {
+const ImageUpload = ({ handleChange, base64, handleClick }) => {
 
   let fileInput = null;
 
   const fileReader = new FileReader();
   fileReader.onload = () => {
-    console.log(fileReader.result);
-    onChange({
-      target: {
-        name: 'base64',
-        value: fileReader.result
-      }
-    });
+    handleChange(fileReader.result);
   };
 
   const handleImage = (e) => {
@@ -21,7 +15,7 @@ const DragDrop = ({ onChange, value }) => {
     fileReader.readAsDataURL(file);
   };
 
-  const style = value ? { backgroundImage: `url(${value})` } : null;
+  const style = base64 ? { backgroundImage: `url(${base64})`, height: '200px', width: '200px' } : { height: '200px', width: '200px' };
 
   return (
     <div className="drag-drop">
@@ -38,8 +32,9 @@ const DragDrop = ({ onChange, value }) => {
         onDrop={handleImage}
         onClick={() => fileInput.click()}
       ></div>
+      <button disabled={!base64} onClick={handleClick}>Send Image</button>
     </div>
   );
 };
 
-export default DragDrop;
+export default ImageUpload;
