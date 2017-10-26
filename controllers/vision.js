@@ -12,7 +12,7 @@ function visionProxy(req, res) {
       'requests': [
         {
           'image': {
-            'content': // base64 //
+            'content': req.body.base64.match(/base64,(.*)$/)[1]
           },
           'features': [
             {
@@ -32,8 +32,3 @@ function visionProxy(req, res) {
 module.exports = {
   proxy: visionProxy
 };
-
-// 'source': {
-//   'imageUri':
-//     'https://laikatourist.com/wp-content/uploads/2016/08/machu-picchu-travel.jpg'
-// }

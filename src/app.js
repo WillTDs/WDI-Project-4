@@ -10,9 +10,6 @@ class App extends React.Component {
     return (
       <Router>
         <div>
-          <header>
-            <h1>WDI Project 4: MERN Stack App</h1>
-          </header>
           <main>
             <Routes />
           </main>

@@ -10,8 +10,8 @@ class Index extends React.Component {
 
   submitBase64 = () => {
     Axios
-      .post(`/api/landmarks/${this.props.match.params.id}`)
-      .then(res => this.setState({ landmark: res.data }, () => console.log(this.state)))
+      .post('/api/vision', this.state)
+      .then(res => this.setState({ results: res.data.responses[0].webDetection.webEntities }, () => console.log(this.state)))
       .catch(err => console.log(err));
   }
 
@@ -29,6 +29,7 @@ class Index extends React.Component {
           base64={this.state.base64}
           handleClick={this.submitBase64}
         />
+        {this.state.results && this.state.results.map(result => <p key={result.entityId}>{result.description}</p>)}
       </div>
     );
   }

@@ -15,7 +15,7 @@ const ImageUpload = ({ handleChange, base64, handleClick }) => {
     fileReader.readAsDataURL(file);
   };
 
-  const style = base64 ? { backgroundImage: `url(${base64})`, height: '200px', width: '200px' } : { height: '200px', width: '200px' };
+  const style = base64 ? { backgroundImage: `url(${base64})`, height: '250px', width: '250px', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' } : { height: '250px', width: '250px', backgroundColor: 'grey' };
 
   return (
     <div className="drag-drop">
