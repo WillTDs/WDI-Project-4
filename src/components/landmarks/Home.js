@@ -14,9 +14,10 @@ const Home = ({ history }) => {
   return(
     <main>
       {Auth.isAuthenticated() && <button><Link to="/landmarks">Landmarks</Link></button>}
+      {Auth.isAuthenticated() && <button><Link to="/visited">Visited</Link></button>}
       {!Auth.isAuthenticated() && <button><Link to="/login">Login</Link></button>}
       {!Auth.isAuthenticated() && <button><Link to="/register">Register</Link></button>}
-      {Auth.isAuthenticated() && <a href="#" onClick={logout}>Logout</a>}
+      {Auth.isAuthenticated() && <button href="#" onClick={logout}>Logout</button>}
     </main>
   );
 };
