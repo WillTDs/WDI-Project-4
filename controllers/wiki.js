@@ -1,9 +1,9 @@
 const rp = require('request-promise');
 
 function wikiProxy(req, res) {
+  const lang = req.query.lang || 'en';
   return rp({
-    // https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=Big%20Ben  - full url i'm trying to break down
-    url: 'https://en.wikipedia.org/w/api.php',
+    url: `https://${lang}.wikipedia.org/w/api.php`,
     method: 'GET',
     json: true,
     qs: {
@@ -13,11 +13,15 @@ function wikiProxy(req, res) {
       exintro: '', // ??
       explaintext: '', // ??
       titles: req.query.title /// The landmark name from vision controller
-    }  // titles: response.data.{responses.webDetection.webEntities.description} ??
-    // if landmark name is two words insert %20 between words e.g. big%20ben
-
+    }
   })
-    .then((response) => res.json(response))
+    .then((response) => {
+      const pageId = Object.keys(response.query.pages)[0];
+      const data = response.query.pages[pageId];
+      delete data.pageid;
+      delete data.ns;
+      res.json(data);
+    })
     .catch((err) => res.json(err));
 }
 

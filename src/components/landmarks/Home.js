@@ -13,6 +13,7 @@ const Home = ({ history }) => {
 
   return(
     <main>
+      <h1>LANDMARKER</h1>
       {Auth.isAuthenticated() && <button><Link to="/landmarks">Landmarks</Link></button>}
       {Auth.isAuthenticated() && <button><Link to="/visited">Visited</Link></button>}
       {!Auth.isAuthenticated() && <button><Link to="/login">Login</Link></button>}
