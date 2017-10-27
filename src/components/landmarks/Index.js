@@ -10,17 +10,16 @@ class Index extends React.Component {
 
   submitBase64 = () => {
 
-    const pageid = Object.keys(query.pages)[0];
-    const page = query.pages[pageid];
+    const pageId = Object.keys(query.pages)[0];
 
     Axios
       .post('/api/vision', this.state)
       .then(res => this.setState({ results: res.data.responses[0].webDetection.webEntities }))
       .post('api/wiki', this.state[0])
-      .then(res => this.setState({ wikiResults: res.data.page }))
+      .then(res => this.setState({ wikiResults: res.data.query.pages[pageId] }))
+      // get the stuff rdy for wiki {this.state[0]} e.target.innerhtml
       .catch(err => console.log(err));
   }
-//get the stuff rdy for wiki {this.state[0]} e.target.innerhtml
   handleChange = base64 => {
     this.setState({ base64 });
   }

@@ -2,8 +2,7 @@ const router = require('express').Router();
 const places  = require('../controllers/places');
 const visionAPI  = require('../controllers/vision');
 const wikiAPI  = require('../controllers/wiki');
-// const auth  = require('../controllers/auth');
-// const oauth  = require('../controllers/oauth');
+const auth  = require('../controllers/auth');
 const secureRoute = require('../lib/secureRoute');
 
 router.route('/places')
@@ -15,14 +14,11 @@ router.route('/places/:id')
   .put(secureRoute, places.update)
   .delete(secureRoute, places.delete);
 
-// router.route('/register')
-//   .post(auth.register);
+router.route('/register')
+  .post(auth.register);
 
-// router.route('/login')
-//   .post(auth.login);
-
-// router.route('/oauth/github')
-//   .post(oauth.github);
+router.route('/login')
+  .post(auth.login);
 
 router.post('/vision', visionAPI.proxy);
 router.get('/wiki', wikiAPI.proxy);
