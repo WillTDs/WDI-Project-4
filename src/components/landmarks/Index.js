@@ -14,9 +14,9 @@ class Index extends React.Component {
 
   handleImage = () => {
     Axios
-    .post('/api/vision', this.state)
-    .then(res => this.setState({ imageResults: res.data }, () => console.log(this.state)))
-    .catch(err => console.log(err));
+      .post('/api/vision', this.state)
+      .then(res => this.setState({ imageResults: res.data }, () => console.log(this.state)))
+      .catch(err => console.log(err));
   }
 
   selectResult = (result) => {
@@ -26,12 +26,12 @@ class Index extends React.Component {
   handleWiki = () => {
 
     Axios
-    .get('/api/wiki', {
-      params: { title: this.state.result, lang: this.state.lang }
-    })
-    .then(res => this.setState({ wikiResult: res.data }, () => console.log(this.state)))
+      .get('/api/wiki', {
+        params: { title: this.state.result, lang: this.state.lang }
+      })
+      .then(res => this.setState({ wikiResult: res.data }, () => console.log(this.state)))
     // get the stuff rdy for wiki {this.state[0]} e.target.innerhtml
-    .catch(err => console.log(err));
+      .catch(err => console.log(err));
   }
 
   handleChange = base64 => {
@@ -54,7 +54,6 @@ class Index extends React.Component {
               base64={this.state.base64}
               handleClick={this.handleImage}
             />
-
             {
               this.state.imageResults && this.state.imageResults.map(result =>
                 <button className="resultsButton" key={result.entityId} onClick={() => this.selectResult(result)}>
