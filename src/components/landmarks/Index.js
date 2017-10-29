@@ -47,7 +47,6 @@ class Index extends React.Component {
     return (
       <div className="container">
         <div className="row landmarkHeader">
-          <h1 className="landmarkTitle">LANDMARKER</h1>
           <div className="flags">
             {
               countries.map(country => (
@@ -57,7 +56,8 @@ class Index extends React.Component {
           </div>
         </div>
         <div className="row">
-          <div className="col-md-4">
+          <div className="col-md-4 indexImage">
+            <h1 className="landmarkTitle">LANDMARKER</h1>
             <ImageUpload
               handleChange={this.handleChange}
               base64={this.state.base64}

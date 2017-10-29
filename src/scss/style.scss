@@ -1,20 +1,54 @@
 html, body {
   height: 100vh;
+  width: 100vw;
+  font-family: 'Roboto', sans-serif;
 }
 
 button {
   padding: 12px;
 }
 
-//landmark page
-
-
-.landmarkHeader {
-  justify-content: space-between;
+.container {
+  height: 100vh;
 }
 
-.landmarkTitle {
+//home page
+
+.homeCol {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.homeTitle {
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  font-size: 90px;
+  margin-bottom: 1.5rem;
+}
+
+.homeBtn {
+  width: 30%;
+  display: block;
+  margin: 0 auto;
+  background-color: #fafafa;
+  color: #007bff;
+}
+
+.homeBtnWrap {
+  margin: 0 auto;
+}
+
+.homeBackground {
+  margin-top: -80px;
+  height: 500px;
   width: 100%;
+}
+
+//landmark page
+
+.landmarkTitle {
+  margin: 0 auto;
   text-align: center;
 }
 
@@ -24,8 +58,9 @@ button {
   }
   .drop-zone {
     margin: 0 auto;
-    height: 290px;
-    width: 290px;
+    height: 300px;
+    width: 100%;
+    min-width: 290px;
     background-color: grey;
     background-size: cover;
     background-repeat: no-repeat;
@@ -34,7 +69,7 @@ button {
 }
 
 .flag {
-  margin: 10px 5px 0 0;
+  margin: 10px;
   height: 30px;
   width: 45px;
 }
@@ -59,7 +94,7 @@ button {
   display: block;
   margin: 0 auto;
   width: 100%;
-  max-width: 290px;
+  min-width: 290px;
   height: 40px;
   line-height: 0;
   margin-bottom: 20px;
@@ -72,6 +107,7 @@ button {
   background-color: #fafafa;
   margin-top: 5px;
   width: 100%;
+  min-width: 290px;
   border-radius: 5px;
 }
 
