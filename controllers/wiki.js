@@ -10,9 +10,9 @@ function wikiProxy(req, res) {
       format: 'json',
       action: 'query',
       prop: 'extracts',
-      exintro: '', // ??
-      explaintext: '', // ??
-      titles: req.query.title /// The landmark name from vision controller
+      exintro: '',
+      explaintext: '',
+      titles: req.query.title
     }
   })
     .then((response) => {

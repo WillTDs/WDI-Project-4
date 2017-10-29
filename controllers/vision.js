@@ -8,7 +8,10 @@ function visionProxy(req, res) {
     qs: { key: process.env.GOOGLE_VISION_API_KEY },
     body: {
       requests: [{
-        image: { content: req.body.base64.match(/base64,(.*)$/)[1] },
+        image: {
+          content: req.body.base64.match(/base64,(.*)$/)[1]
+           
+        },
         features: [{
           type: 'WEB_DETECTION',
           maxResults: 2

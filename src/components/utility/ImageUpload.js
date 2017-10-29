@@ -15,7 +15,7 @@ const ImageUpload = ({ handleChange, base64, handleClick }) => {
     fileReader.readAsDataURL(file);
   };
 
-  const style = base64 ? { backgroundImage: `url(${base64})`, height: '250px', width: '250px', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' } : { height: '250px', width: '250px', backgroundColor: 'grey' };
+  const style = base64 ? { backgroundImage: `url(${base64})`} : {};
 
   return (
     <div className="drag-drop">
@@ -26,13 +26,13 @@ const ImageUpload = ({ handleChange, base64, handleClick }) => {
         onChange={handleImage}
       />
       <div
-        className="dropzone"
+        className="drop-zone"
         style={style}
         onDragOver={e => e.preventDefault()}
         onDrop={handleImage}
         onClick={() => fileInput.click()}
       ></div>
-      <button disabled={!base64} onClick={handleClick}>Send Image</button>
+      <button className="sendButton" disabled={!base64} onClick={handleClick}>Send Image</button>
     </div>
   );
 };

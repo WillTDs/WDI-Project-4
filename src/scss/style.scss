@@ -1,8 +1,84 @@
 html, body {
   height: 100vh;
-  background-color: #b4ecb4;
 }
 
 button {
   padding: 12px;
+}
+
+//landmark page
+
+
+.landmarkHeader {
+  justify-content: space-between;
+}
+
+.landmarkTitle {
+  width: 100%;
+  text-align: center;
+}
+
+.drag-drop {
+  input[type="file"] {
+    display: none;
+  }
+  .drop-zone {
+    margin: 0 auto;
+    height: 290px;
+    width: 290px;
+    background-color: grey;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+.flag {
+  margin: 10px 5px 0 0;
+  height: 30px;
+  width: 45px;
+}
+
+.flags {
+  margin: 0 auto;
+}
+
+.language > input {
+  visibility: hidden;
+  position: absolute;
+}
+.language > input + img {
+  cursor:pointer;
+  border:2px solid transparent;
+}
+.language > input:checked + img {
+  border:2px solid #b4ecb4;
+}
+
+.sendButton {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 290px;
+  height: 40px;
+  line-height: 0;
+  margin-bottom: 20px;
+  border-radius: 0 0 5px 5px;
+  background-color: #000080;
+  color: white;
+}
+
+.resultsButton {
+  background-color: #fafafa;
+  margin-top: 5px;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.wikiTitle {
+  text-align: center;
+}
+
+.wikiExtract {
+  text-align: justify;
 }
