@@ -48,7 +48,7 @@ button {
 //landmark page
 
 .landmarkTitle {
-  margin: 0 auto;
+  margin: 10px auto;
   text-align: center;
 }
 
@@ -59,12 +59,14 @@ button {
   .drop-zone {
     margin: 0 auto;
     height: 300px;
-    width: 100%;
+    border: 1px solid grey;
+    width: calc(100% - 2px);
     min-width: 290px;
-    background-color: grey;
-    background-size: cover;
+    background-color: #fafafa;
+    background-size: 100px;
     background-repeat: no-repeat;
     background-position: center;
+    background-image: url('/assets/browse.png');
   }
 }
 
@@ -75,7 +77,8 @@ button {
 }
 
 .flags {
-  margin: 0 auto;
+  margin-top: 5px;
+  text-align: center;
 }
 
 .language > input {
@@ -119,4 +122,12 @@ button {
   font-family: 'Palanquin', sans-serif;
   font-weight: 300;
   text-align: justify;
+}
+
+.wikiSaveBtn {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  min-width: 290px;
+  margin-bottom: 10px;
 }

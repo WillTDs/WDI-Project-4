@@ -14,9 +14,9 @@ class Index extends React.Component {
 
   handleImage = () => {
     Axios
-      .post('/api/vision', this.state)
-      .then(res => this.setState({ imageResults: res.data }, () => console.log(this.state)))
-      .catch(err => console.log(err));
+    .post('/api/vision', this.state)
+    .then(res => this.setState({ imageResults: res.data }, () => console.log(this.state)))
+    .catch(err => console.log(err));
   }
 
   selectResult = (result) => {
@@ -26,12 +26,12 @@ class Index extends React.Component {
   handleWiki = () => {
 
     Axios
-      .get('/api/wiki', {
-        params: { title: this.state.result, lang: this.state.lang }
-      })
-      .then(res => this.setState({ wikiResult: res.data }, () => console.log(this.state)))
-      // get the stuff rdy for wiki {this.state[0]} e.target.innerhtml
-      .catch(err => console.log(err));
+    .get('/api/wiki', {
+      params: { title: this.state.result, lang: this.state.lang }
+    })
+    .then(res => this.setState({ wikiResult: res.data }, () => console.log(this.state)))
+    // get the stuff rdy for wiki {this.state[0]} e.target.innerhtml
+    .catch(err => console.log(err));
   }
 
   handleChange = base64 => {
@@ -46,15 +46,6 @@ class Index extends React.Component {
   render() {
     return (
       <div className="container">
-        <div className="row landmarkHeader">
-          <div className="flags">
-            {
-              countries.map(country => (
-                <LanguageSelect key={country.code} handleClick={this.langChange} {...country} />
-              ))
-            }
-          </div>
-        </div>
         <div className="row">
           <div className="col-md-4 indexImage">
             <h1 className="landmarkTitle">LANDMARKER</h1>
@@ -76,8 +67,18 @@ class Index extends React.Component {
             {
               this.state.wikiResult &&
               <div>
-                <h1 className="wikiTitle">{this.state.wikiResult.title}</h1>
-                <p className="wikiExtract">{this.state.wikiResult.extract}</p>
+                <div className="flags">
+                  {
+                    countries.map(country => (
+                      <LanguageSelect key={country.code} handleClick={this.langChange} {...country} />
+                    ))
+                  }
+                </div>
+                <div>
+                  <h1 className="wikiTitle">{this.state.wikiResult.title}</h1>
+                  <p className="wikiExtract">{this.state.wikiResult.extract}</p>
+                  <button className="wikiSaveBtn">Save</button>
+                </div>
               </div>
             }
           </div>
