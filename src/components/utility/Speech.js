@@ -23,6 +23,7 @@ class Speech extends  React.Component  {
   }
 
   speak = () => {
+    this.playToggle();
     if(this.synth.speaking) {
       this.isSpeaking = false;
       return this.synth.pause();
@@ -34,10 +35,14 @@ class Speech extends  React.Component  {
 
   speakPause = () => this.synth.pause();
 
+  playToggle = () => {
+    this.button.classList.toggle('pauseClass');
+  }
+
   render() {
     return (
-      <div>
-        <button className="speechBtn" onClick={this.speak}></button>
+      <div className="speechWrap">
+        <button className="speechBtn" onClick={this.speak} ref={element => this.button = element}></button>
       </div>
     );
   }

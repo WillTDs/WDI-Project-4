@@ -12,21 +12,19 @@ const Home = ({ history }) => {
   }
 
   return(
-    <main className="homePage">
-      <img className="homeBackground" src="assets/london.png" />
-      <div className="row">
-        <div className="col-md-8 offset-md-2 homeCol">
-          <h1 className="homeTitle">LANDMARKER</h1>
-          <div className="homeBtnWrap">
-            {Auth.isAuthenticated() && <button className="homeBtn"><Link to="/landmarks">Go</Link></button>}
-            {Auth.isAuthenticated() && <button className="homeBtn"><Link to="/visited">Favs</Link></button>}
-            {!Auth.isAuthenticated() && <button className="homeBtn"><Link to="/login">Login</Link></button>}
-            {!Auth.isAuthenticated() && <button className="homeBtn"><Link to="/register">Register</Link></button>}
-            {Auth.isAuthenticated() && <button className="homeBtn" href="#" onClick={logout}>Logout</button>}
-          </div>
+    <div className="homePage">
+      {/* <img className="homeBackground" src="assets/london.png" /> */}
+      <div className="homeCol">
+        <h1 className="homeTitle">LANDMARKER</h1>
+        <div className="homeBtnWrap">
+          {Auth.isAuthenticated() && <Link to="/landmarks" className="homeBtn">Go</Link>}
+          {Auth.isAuthenticated() && <Link to="/visited" className="homeBtn">Visited</Link>}
+          {!Auth.isAuthenticated() && <Link to="/login" className="homeBtn">Login</Link>}
+          {!Auth.isAuthenticated() && <Link to="/register" className="homeBtn">Register</Link>}
+          {Auth.isAuthenticated() && <button className="homeBtn" href="#" onClick={logout}>Logout</button>}
         </div>
       </div>
-    </main>
+    </div>
   );
 };
 

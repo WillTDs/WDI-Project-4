@@ -1,5 +1,6 @@
 import React from 'react';
 import Axios from 'axios';
+import { Link, withRouter } from 'react-router-dom';
 
 import ImageUpload from '../utility/ImageUpload';
 import countries from '../../lib/countries';
@@ -51,7 +52,7 @@ class Index extends React.Component {
       <div className="container">
         <div className="row">
           <div className="col-md-5 indexImage">
-            <h1 className="landmarkTitle">LANDMARKER</h1>
+            <Link className="landmarkTitleLink" to="/"><h1 className="landmarkTitle">LANDMARKER</h1></Link>
             <ImageUpload
               handleChange={this.handleChange}
               base64={this.state.base64}
@@ -71,16 +72,16 @@ class Index extends React.Component {
               <div>
                 <div className="flags">
                   {
+                    this.state.wikiResult.extract &&
+                    <Speech extract={this.state.wikiResult.extract} lang={this.state.lang} />
+                  }
+                  {
                     countries.map(country => (
                       <LanguageSelect key={country.code} handleClick={this.langChange} {...country} />
                     ))
                   }
                 </div>
                 <div>
-                  {
-                    this.state.wikiResult.extract &&
-                    <Speech extract={this.state.wikiResult.extract} lang={this.state.lang} />
-                  }
                   <h1 className="wikiTitle">{this.state.wikiResult.title}</h1>
                   <p className="wikiExtract">{this.state.wikiResult.extract}</p>
                   <button className="wikiSaveBtn">Save</button>
@@ -94,4 +95,4 @@ class Index extends React.Component {
   }
 }
 
-export default Index;
+export default withRouter(Index);
