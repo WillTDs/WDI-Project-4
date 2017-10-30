@@ -207,14 +207,15 @@ button {
 .formWrap {
   height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   background-image: url('https://s-media-cache-ak0.pinimg.com/originals/24/95/4a/24954ae6c1ea7c9fda155ffce7b68bbe.jpg');
   background-repeat: no-repeat;
-  background-position: left;
+  background-position: left 10px bottom 70px;
 }
 
 .formGroupWrap {
+  margin-top: 140px;
   width: 33%;
 }
 
@@ -250,4 +251,31 @@ button {
   text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 3px;
+}
+
+@media only screen and (max-width: 900px) {
+  .formWrap {
+    background-size: 60%;
+    background-position: bottom left;
+    align-items: flex-start;
+  }
+
+  .formGroupWrap {
+    margin-top: 160px;
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .formWrap {
+    background-image: url('/assets/towerbridge.jpg');
+    background-size: 100%;
+    background-position: 20px bottom;
+    align-items: flex-start;
+  }
+
+  .formGroupWrap {
+    margin-top: 120px;
+    width: 90%;
+  }
 }

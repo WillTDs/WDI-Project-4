@@ -5,7 +5,9 @@ const LoginForm = ({ handleChange, handleSubmit, credentials, error }) => {
     <div className="formWrap">
       <div className="formGroupWrap">
         <h1 className="formTitle">Login</h1>
+
         <form onSubmit={handleSubmit}>
+
           <div className="formGroup">
             <input
               type="text"
@@ -15,7 +17,9 @@ const LoginForm = ({ handleChange, handleSubmit, credentials, error }) => {
               value={credentials.email}
               className="formItem"
             />
+            {error.email && <small>{error.email}</small>}
           </div>
+
           <div className="formGroup">
             <input
               type="password"
@@ -25,15 +29,13 @@ const LoginForm = ({ handleChange, handleSubmit, credentials, error }) => {
               value={credentials.password}
               className="formItem"
             />
+            {error.password && <small>{error.password}</small>}
           </div>
-          {
-            error &&
-            <p>
-              <small className="has-error">{error}</small>
-            </p>
-          }
+
           <button className="formBtn">Submit</button>
+
         </form>
+
       </div>
     </div>
   );

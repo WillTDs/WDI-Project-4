@@ -1,6 +1,6 @@
 import React from 'react';
 
-const RegisterForm = ({ handleChange, handleSubmit, user }) => {
+const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
   return (
     <div className="formWrap">
       <div className="formGroupWrap">
@@ -16,6 +16,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user }) => {
               value={user.username}
               className="formItem"
             />
+            {errors.username && <small>{errors.username}</small>}
           </div>
 
           <div className='formGroup'>
@@ -27,6 +28,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user }) => {
               value={user.email}
               className="formItem"
             />
+            {errors.email && <small>{errors.email}</small>}
           </div>
 
           <div className='formGroup'>
@@ -38,6 +40,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user }) => {
               value={user.password}
               className="formItem"
             />
+            {errors.password && <small>{errors.password}</small>}
           </div>
 
           <div className='formGroup'>
@@ -49,6 +52,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user }) => {
               value={user.passwordConfirmation}
               className="formItem"
             />
+            {errors.passwordConfirmation && <small>{errors.passwordConfirmation}</small>}
           </div>
 
           <button className="formBtn">Submit</button>

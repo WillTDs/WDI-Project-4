@@ -1,14 +1,14 @@
 const Place = require('../models/place');
 
-function placesIndex(req, res, next) {
+function visitedIndex(req, res, next) {
   Place
     .find()
     .exec()
-    .then(places => res.json(places))
+    .then(visited => res.json(visited))
     .catch(next);
 }
 
-function placesCreate(req, res, next) {
+function visitedCreate(req, res, next) {
 
   Place
     .create(req.body)
@@ -16,7 +16,7 @@ function placesCreate(req, res, next) {
     .catch(next);
 }
 
-function placesShow(req, res, next) {
+function visitedShow(req, res, next) {
   Place
     .findById(req.params.id)
     .exec()
@@ -30,7 +30,7 @@ function placesShow(req, res, next) {
     });
 }
 
-function placesUpdate(req, res, next) {
+function visitedUpdate(req, res, next) {
   Place
     .findById(req.params.id)
     .exec()
@@ -43,7 +43,7 @@ function placesUpdate(req, res, next) {
     .catch(next);
 }
 
-function placesDelete(req, res, next) {
+function visitedDelete(req, res, next) {
   Place
     .findById(req.params.id)
     .exec()
@@ -56,9 +56,9 @@ function placesDelete(req, res, next) {
 }
 
 module.exports = {
-  index: placesIndex,
-  create: placesCreate,
-  show: placesShow,
-  update: placesUpdate,
-  delete: placesDelete
+  index: visitedIndex,
+  create: visitedCreate,
+  show: visitedShow,
+  update: visitedUpdate,
+  delete: visitedDelete
 };

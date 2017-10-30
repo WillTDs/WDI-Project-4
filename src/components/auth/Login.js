@@ -15,7 +15,8 @@ class Login extends React.Component {
 
   handleChange = ({ target: { name, value } }) => {
     const credentials = Object.assign({}, this.state.credentials, { [name]: value });
-    this.setState({ credentials });
+    const error = Object.assign({}, this.state.error, { [name]: '' });
+    this.setState({ credentials, error });
   }
 
   handleSubmit = (e) => {

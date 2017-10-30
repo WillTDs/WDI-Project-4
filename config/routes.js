@@ -1,18 +1,18 @@
 const router = require('express').Router();
-const places  = require('../controllers/places');
+const visited  = require('../controllers/visited');
 const visionAPI  = require('../controllers/vision');
 const wikiAPI  = require('../controllers/wiki');
 const auth  = require('../controllers/auth');
 const secureRoute = require('../lib/secureRoute');
 
-router.route('/places')
-  .get(places.index)
-  .post(secureRoute, places.create);
+router.route('/visited')
+  .get(visited.index)
+  .post(secureRoute, visited.create);
 
-router.route('/places/:id')
-  .get(places.show)
-  .put(secureRoute, places.update)
-  .delete(secureRoute, places.delete);
+router.route('/visited/:id')
+  .get(visited.show)
+  .put(secureRoute, visited.update)
+  .delete(secureRoute, visited.delete);
 
 router.route('/register')
   .post(auth.register);
