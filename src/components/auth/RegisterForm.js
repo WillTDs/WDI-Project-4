@@ -16,7 +16,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
               value={user.username}
               className="formItem"
             />
-            {errors.username && <small>{errors.username}</small>}
+            {errors.username && <small className="formError">{errors.username}</small>}
           </div>
 
           <div className='formGroup'>
@@ -28,7 +28,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
               value={user.email}
               className="formItem"
             />
-            {errors.email && <small>{errors.email}</small>}
+            {errors.email && <small className="formError">{errors.email}</small>}
           </div>
 
           <div className='formGroup'>
@@ -40,7 +40,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
               value={user.password}
               className="formItem"
             />
-            {errors.password && <small>{errors.password}</small>}
+            {errors.password && <small className="formError">{errors.password}</small>}
           </div>
 
           <div className='formGroup'>
@@ -52,7 +52,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
               value={user.passwordConfirmation}
               className="formItem"
             />
-            {errors.passwordConfirmation && <small>{errors.passwordConfirmation}</small>}
+            {errors.passwordConfirmation && <small className="formError">{errors.passwordConfirmation}</small>}
           </div>
 
           <button className="formBtn">Submit</button>

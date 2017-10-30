@@ -230,7 +230,6 @@ button {
 .formItem {
   padding: 5px;
   width: 100%;
-  border-radius: 3px;
   border: none;
   border-bottom: 1px solid grey;
   &:focus {
@@ -253,7 +252,11 @@ button {
   letter-spacing: 3px;
 }
 
-@media only screen and (max-width: 900px) {
+.formError {
+  color: #D8000C;
+}
+
+@media only screen and (max-width: 840px) {
   .formWrap {
     background-image: url('/assets/towerbridge.jpg');
     background-size: 100%;
@@ -262,7 +265,7 @@ button {
   }
 
   .formGroupWrap {
-    margin-top: 160px;
+    margin-top: 80px;
     width: 50%;
   }
 }
@@ -276,7 +279,7 @@ button {
   }
 
   .formGroupWrap {
-    margin-top: 120px;
+    margin-top: 60px;
     width: 90%;
   }
 }
