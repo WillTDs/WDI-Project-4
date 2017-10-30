@@ -3,13 +3,16 @@ import Axios from 'axios';
 
 import ImageUpload from '../utility/ImageUpload';
 import countries from '../../lib/countries';
-import LanguageSelect from './LanguageSelect';
+import LanguageSelect from '../utility/LanguageSelect';
+import Speech from '../utility/Speech';
 
 class Index extends React.Component {
   state = {
     base64: '',
     lang: '',
-    result: ''
+    result: '',
+    imageResults: [],
+    wikiResult: {}
   };
 
   handleImage = () => {
@@ -30,7 +33,6 @@ class Index extends React.Component {
         params: { title: this.state.result, lang: this.state.lang }
       })
       .then(res => this.setState({ wikiResult: res.data }, () => console.log(this.state)))
-    // get the stuff rdy for wiki {this.state[0]} e.target.innerhtml
       .catch(err => console.log(err));
   }
 
@@ -40,14 +42,15 @@ class Index extends React.Component {
 
   langChange = (e) => {
     const lang = e.target.value;
-    this.setState({ lang }, this.handleWiki);
+    const result = this.state.wikiResult.langlinks.find(langlink => langlink.lang === lang)['*'];
+    this.setState({ lang, result }, this.handleWiki);
   }
 
   render() {
     return (
       <div className="container">
         <div className="row">
-          <div className="col-md-4 indexImage">
+          <div className="col-md-5 indexImage">
             <h1 className="landmarkTitle">LANDMARKER</h1>
             <ImageUpload
               handleChange={this.handleChange}
@@ -62,7 +65,7 @@ class Index extends React.Component {
               )
             }
           </div>
-          <div className="col-md-8">
+          <div className="col-md-7">
             {
               this.state.wikiResult &&
               <div>
@@ -74,6 +77,10 @@ class Index extends React.Component {
                   }
                 </div>
                 <div>
+                  {
+                    this.state.wikiResult.extract &&
+                    <Speech extract={this.state.wikiResult.extract} lang={this.state.lang} />
+                  }
                   <h1 className="wikiTitle">{this.state.wikiResult.title}</h1>
                   <p className="wikiExtract">{this.state.wikiResult.extract}</p>
                   <button className="wikiSaveBtn">Save</button>

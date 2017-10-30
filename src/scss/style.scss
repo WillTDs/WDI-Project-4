@@ -62,8 +62,9 @@ button {
     border: 1px solid grey;
     width: calc(100% - 2px);
     min-width: 290px;
+    max-width: 370px;
     background-color: #fafafa;
-    background-size: 100px;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     background-image: url('/assets/browse.png');
@@ -98,6 +99,7 @@ button {
   margin: 0 auto;
   width: 100%;
   min-width: 290px;
+  max-width: 370px;
   height: 40px;
   line-height: 0;
   margin-bottom: 20px;
