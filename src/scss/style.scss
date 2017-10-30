@@ -35,7 +35,7 @@ button {
 }
 
 .homePage {
-  background-image: url('https://images.unsplash.com/photo-1458086235996-865752e03740?auto=format&fit=crop&w=1834&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D');
+  background-image: url('/assets/stpauls.jpg');
   height: 100vh;
   background-position: center;
   background-size: cover;
@@ -209,7 +209,7 @@ button {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  background-image: url('https://s-media-cache-ak0.pinimg.com/originals/24/95/4a/24954ae6c1ea7c9fda155ffce7b68bbe.jpg');
+  background-image: url('/assets/bigben.jpg');
   background-repeat: no-repeat;
   background-position: left 10px bottom 70px;
 }
@@ -255,7 +255,8 @@ button {
 
 @media only screen and (max-width: 900px) {
   .formWrap {
-    background-size: 60%;
+    background-image: url('/assets/towerbridge.jpg');
+    background-size: 100%;
     background-position: bottom left;
     align-items: flex-start;
   }
@@ -266,11 +267,11 @@ button {
   }
 }
 
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: 460px) {
   .formWrap {
     background-image: url('/assets/towerbridge.jpg');
     background-size: 100%;
-    background-position: 20px bottom;
+    background-position: bottom 60px left;
     align-items: flex-start;
   }
 
