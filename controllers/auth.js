@@ -2,6 +2,14 @@ const jwt = require('jsonwebtoken');
 const { secret } = require('../config/environment');
 const User = require('../models/user');
 
+function profile(req, res, next) {
+  User
+    .findById(req.currentUser.id)
+    .exec()
+    .then(user => res.json(user))
+    .catch(next);
+}
+
 function register(req, res, next) {
   User
     .create(req.body)
@@ -23,5 +31,6 @@ function login(req, res, next) {
 
 module.exports = {
   register,
-  login
+  login,
+  profile
 };

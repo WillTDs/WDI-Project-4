@@ -14,7 +14,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
               placeholder="Username"
               onChange={handleChange}
               value={user.username}
-              className="formItem"
+              className={'formItem ' + (errors.username ? 'error' : '')}
             />
             {errors.username && <small className="formError">{errors.username}</small>}
           </div>
@@ -26,7 +26,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
               placeholder="Email"
               onChange={handleChange}
               value={user.email}
-              className="formItem"
+              className={'formItem ' + (errors.email ? 'error' : '')}
             />
             {errors.email && <small className="formError">{errors.email}</small>}
           </div>
@@ -38,7 +38,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
               placeholder="Password"
               onChange={handleChange}
               value={user.password}
-              className="formItem"
+              className={'formItem ' + (errors.password ? 'error' : '')}
             />
             {errors.password && <small className="formError">{errors.password}</small>}
           </div>
@@ -50,7 +50,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
               placeholder="Confirm Password"
               onChange={handleChange}
               value={user.passwordConfirmation}
-              className="formItem"
+              className={'formItem ' + (errors.passwordConfirmation ? 'error' : '')}
             />
             {errors.passwordConfirmation && <small className="formError">{errors.passwordConfirmation}</small>}
           </div>

@@ -1,64 +1,37 @@
-const Place = require('../models/place');
-
-function visitedIndex(req, res, next) {
-  Place
-    .find()
-    .exec()
-    .then(visited => res.json(visited))
-    .catch(next);
-}
+const User = require('../models/user');
 
 function visitedCreate(req, res, next) {
-
-  Place
-    .create(req.body)
-    .then(place => res.status(201).json(place))
-    .catch(next);
-}
-
-function visitedShow(req, res, next) {
-  Place
-    .findById(req.params.id)
+  User
+    .findById(req.currentUser.id)
     .exec()
-    .then((place) => {
-      if(!place) return res.notFound();
-      res.json(place);
-    })
-    .catch((err) => {
-      console.log('ERROR IN CATCH ===========>', err);
-      next(err);
-    });
-}
+    .then((user) => {
+      if(!user) return res.notFound();
 
-function visitedUpdate(req, res, next) {
-  Place
-    .findById(req.params.id)
-    .exec()
-    .then((place) => {
-      if(!place) return res.notFound();
-      place = Object.assign(place, req.body);
-      return place.save();
+      const place = user.places.create(req.body);
+      user.places.push(place);
+
+      return user.save();
     })
-    .then(place => res.json(place))
+    .then((user) => res.json(user))
     .catch(next);
 }
 
 function visitedDelete(req, res, next) {
-  Place
-    .findById(req.params.id)
+  User
+    .findById(req.currentUser.id)
     .exec()
-    .then((place) => {
-      if(!place) return res.notFound();
-      return place.remove();
+    .then((user) => {
+      if(!user) return res.notFound();
+      const place = user.places.id(req.params.id);
+      place.remove();
+
+      return user.save();
     })
     .then(() => res.status(204).end())
     .catch(next);
 }
 
 module.exports = {
-  index: visitedIndex,
   create: visitedCreate,
-  show: visitedShow,
-  update: visitedUpdate,
   delete: visitedDelete
 };

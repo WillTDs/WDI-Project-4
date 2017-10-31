@@ -1,10 +1,22 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
+const placeSchema = mongoose.Schema({
+  title: String,
+  extract: String
+});
+
+placeSchema.virtual('shortExtract').get(function () {
+  if(!this.extract) return false;
+  const ellipsis = this.extract.length > 200 ? '...' : '';
+  return this.extract.substring(0, 200) + ellipsis;
+});
+
 const userSchema = new mongoose.Schema({
   username: { type: String, required: 'Username is required' },
   email: { type: String, required: 'Email is required', unique: 'That email has already been taken' },
-  password: { type: String }
+  password: { type: String, required: 'Password is required' },
+  places: [placeSchema]
 });
 
 userSchema
@@ -14,8 +26,8 @@ userSchema
   });
 
 userSchema.pre('validate', function checkPassword(next) {
-  if(!this.password && !this.githubId) {
-    this.invalidate('password', 'Password is required');
+  if(this._passwordConfirmation === '') {
+    this.invalidate('passwordConfirmation', 'Password confirmation required');
   }
   if(!this.password && this._passwordConfirmation !== this.password) {
     this.invalidate('passwordConfirmation', 'Passwords do not match');

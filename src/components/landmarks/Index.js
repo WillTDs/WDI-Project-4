@@ -1,6 +1,7 @@
 import React from 'react';
 import Axios from 'axios';
 import { Link, withRouter } from 'react-router-dom';
+import Auth from '../../lib/Auth';
 
 import ImageUpload from '../utility/ImageUpload';
 import countries from '../../lib/countries';
@@ -13,8 +14,18 @@ class Index extends React.Component {
     lang: '',
     result: '',
     imageResults: [],
-    wikiResult: {}
+    wikiResult: {},
+    user: {}
   };
+
+  componentDidMount = () => {
+    Axios
+      .get('/api/profile', {
+        headers: { 'Authorization': 'Bearer ' + Auth.getToken() }
+      })
+      .then(res => this.setState({ user: res.data }))
+      .catch(err => console.log(err));
+  }
 
   handleImage = () => {
     Axios
@@ -45,6 +56,26 @@ class Index extends React.Component {
     const lang = e.target.value;
     const result = this.state.wikiResult.langlinks.find(langlink => langlink.lang === lang)['*'];
     this.setState({ lang, result }, this.handleWiki);
+  }
+
+  alreadySaved = () => {
+    return this.state.user.places && this.state.user.places.find(place => place.title === this.state.wikiResult.title);
+  }
+
+  addVisited = (e) => {
+    e.preventDefault();
+
+    const visited = {
+      title: this.state.wikiResult.title,
+      extract: this.state.wikiResult.extract
+    };
+
+    Axios
+      .post('/api/visited', visited, {
+        headers: { 'Authorization': 'Bearer ' + Auth.getToken() }
+      })
+      .then(res => this.setState({ user: res.data }))
+      .catch(err => this.setState({ errors: err.response.data.errors }));
   }
 
   render() {
@@ -84,7 +115,9 @@ class Index extends React.Component {
                 <div>
                   <h1 className="wikiTitle">{this.state.wikiResult.title}</h1>
                   <p className="wikiExtract">{this.state.wikiResult.extract}</p>
-                  <button className="wikiSaveBtn">Save</button>
+                  {this.state.wikiResult.title && !this.alreadySaved() && <button onClick={this.addVisited} className="wikiSaveBtn">Save</button>}
+                  {this.state.wikiResult.title && this.alreadySaved() && <p className="wikiSaveBtn">Saved!</p>}
+
                 </div>
               </div>
             }

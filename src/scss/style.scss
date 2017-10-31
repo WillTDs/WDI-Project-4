@@ -232,9 +232,14 @@ button {
   width: 100%;
   border: none;
   border-bottom: 1px solid grey;
+  margin-bottom: 1px;
   &:focus {
     outline: none;
     border-bottom: 2px solid $brand;
+    margin-bottom: 0;
+  }
+  &.error {
+    border-color: #D8000C;
   }
 }
 

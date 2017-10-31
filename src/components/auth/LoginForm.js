@@ -15,7 +15,7 @@ const LoginForm = ({ handleChange, handleSubmit, credentials, error }) => {
               placeholder="Email"
               onChange={handleChange}
               value={credentials.email}
-              className="formItem"
+              className={'formItem ' + (error ? 'error' : '')}
             />
           </div>
 
@@ -26,7 +26,7 @@ const LoginForm = ({ handleChange, handleSubmit, credentials, error }) => {
               placeholder="Password"
               onChange={handleChange}
               value={credentials.password}
-              className="formItem"
+              className={'formItem ' + (error ? 'error' : '')}
             />
           </div>
 
