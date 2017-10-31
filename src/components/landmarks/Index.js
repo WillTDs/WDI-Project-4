@@ -8,6 +8,8 @@ import countries from '../../lib/countries';
 import LanguageSelect from '../utility/LanguageSelect';
 import Speech from '../utility/Speech';
 
+import Footer from '../utility/Footer';
+
 class Index extends React.Component {
   state = {
     base64: '',
@@ -80,26 +82,27 @@ class Index extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col-md-5 indexImage">
-            <Link className="landmarkTitleLink" to="/"><h1 className="landmarkTitle">LANDMARKER</h1></Link>
-            <ImageUpload
-              handleChange={this.handleChange}
-              base64={this.state.base64}
-              handleClick={this.handleImage}
-            />
-            {
-              this.state.imageResults && this.state.imageResults.map(result =>
-                <button className="resultsButton" key={result.entityId} onClick={() => this.selectResult(result)}>
-                  {result.description}
-                </button>
-              )
-            }
-          </div>
-          <div className="col-md-7">
-            {
-              this.state.wikiResult &&
+      <div>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-5 indexImage">
+              <Link className="landmarkTitleLink" to="/"><h1 className="landmarkTitle">LANDMARKER</h1></Link>
+              <ImageUpload
+                handleChange={this.handleChange}
+                base64={this.state.base64}
+                handleClick={this.handleImage}
+              />
+              {
+                this.state.imageResults && this.state.imageResults.map(result =>
+                  <button className="resultsButton" key={result.entityId} onClick={() => this.selectResult(result)}>
+                    {result.description}
+                  </button>
+                )
+              }
+            </div>
+            <div className="col-md-7">
+              {
+                this.state.wikiResult &&
               <div>
                 <div className="flags">
                   {
@@ -117,12 +120,13 @@ class Index extends React.Component {
                   <p className="wikiExtract">{this.state.wikiResult.extract}</p>
                   {this.state.wikiResult.title && !this.alreadySaved() && <button onClick={this.addVisited} className="wikiSaveBtn">Save</button>}
                   {this.state.wikiResult.title && this.alreadySaved() && <p className="wikiSaveBtn">Saved!</p>}
-
                 </div>
               </div>
-            }
+              }
+            </div>
           </div>
         </div>
+        <Footer />
       </div>
     );
   }
