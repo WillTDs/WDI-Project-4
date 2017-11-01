@@ -19,7 +19,7 @@ class Visited extends React.Component {
 
   deletePlace = () => {
     const placeId = this.state.user.places.id;
-    console.log(placeId);
+    console.log('placeId: ', placeId);
     Axios
       .delete(`/api/visited/${placeId}`, {
         headers: { 'Authorization': 'Bearer ' + Auth.getToken() }
@@ -41,7 +41,7 @@ class Visited extends React.Component {
                 {Auth.isAuthenticated() &&
                   <button
                     className="showDelBtn"
-                    onClick={this.deletePlace}>X
+                    onClick={this.deletePlace()}>X
                   </button>}
               </div>
             ))}

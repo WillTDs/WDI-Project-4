@@ -13,11 +13,9 @@ const Footer = ({ history }) => {
 
   return(
     <footer>
-      {/* <div className="footerWrap"> */}
       <Link to="/visited"><img className="footerLogo" src="/assets/favs.png" /></Link>
-      <Link to="/"><img className="footerLogo" src="/assets/flag.png" /></Link>
+      <Link to="/landmarks"><img className="footerLogo" src="/assets/flag.png" /></Link>
       <a href="#" onClick={logout}><img className="footerLogo" src="/assets/logout.png" /></a>
-      {/* </div> */}
     </footer>
   );
 };
