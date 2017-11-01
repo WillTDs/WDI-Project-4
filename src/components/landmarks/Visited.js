@@ -17,14 +17,13 @@ class Visited extends React.Component {
       .catch(err => console.log(err));
   }
 
-  deletePlace = () => {
-    const placeId = this.state.user.places.id;
-    console.log('placeId: ', placeId);
+  deletePlace = (place) => {
+    console.log('placeId: ', place.id);
     Axios
-      .delete(`/api/visited/${placeId}`, {
+      .delete(`/api/visited/${place.id}`, {
         headers: { 'Authorization': 'Bearer ' + Auth.getToken() }
       })
-      .then(() => console.log('deleted'))
+      .then((res) => this.setState({ user: res.data }))
       .catch(err => console.log(err));
   }
 
@@ -32,17 +31,20 @@ class Visited extends React.Component {
     return(
       <div>
         <div className="showContainer">
-          <h1>Visited</h1>
+          <h1 className="showTitle">Visited</h1>
           <div>
             {this.state.user.places && this.state.user.places.map(place => (
               <div className="showCard" key={place.id}>
-                <h4 className="showTitle">{place.title}</h4>
-                <p className="showText">{place.shortExtract}</p>
-                {Auth.isAuthenticated() &&
-                  <button
+                <div>
+                  <img src="./assets/blackFlag.png" className="showCardIcon" />
+                  {Auth.isAuthenticated() &&
+                  <img src="./assets/delete.png"
                     className="showDelBtn"
-                    onClick={this.deletePlace()}>X
-                  </button>}
+                    onClick={() => this.deletePlace(place)}>
+                  </img>}
+                  <h4 className="showCardTitle">{place.title}</h4>
+                </div>
+                <p className="showText">{place.shortExtract}</p>
               </div>
             ))}
           </div>

@@ -27,7 +27,7 @@ function visitedDelete(req, res, next) {
 
       return user.save();
     })
-    .then(() => res.status(204).end())
+    .then((user) => res.json(user))
     .catch(next);
 }
 

@@ -269,15 +269,35 @@ button {
 
 .showCard {
   border: 1px solid $brand;
-  padding: 4px;
+  padding: 8px;
 }
 
 .showTitle {
+  margin: 10px auto;
   text-align: center;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-shadow: 0px 0px 3px rgba(150, 150, 150, 0.75);
+}
+
+.showCardTitle {
+  text-align: center;
+  padding-bottom: 5px;
 }
 
 .showText {
   text-align: justify;
+}
+
+.showDelBtn {
+  float: right;
+  height: 30px;
+  cursor: pointer;
+}
+
+.showCardIcon {
+  float: left;
+  height: 30px;
 }
 
 // footer
