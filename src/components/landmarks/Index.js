@@ -17,7 +17,8 @@ class Index extends React.Component {
     result: '',
     imageResults: [],
     wikiResult: {},
-    user: {}
+    user: {},
+    loading: false
   };
 
   componentDidMount = () => {
@@ -30,9 +31,10 @@ class Index extends React.Component {
   }
 
   handleImage = () => {
+    this.setState({ loading: true });
     Axios
       .post('/api/vision', this.state)
-      .then(res => this.setState({ imageResults: res.data }, () => console.log(this.state)))
+      .then(res => this.setState({ imageResults: res.data, loading: false }, () => console.log(this.state)))
       .catch(err => console.log(err));
   }
 
@@ -41,7 +43,6 @@ class Index extends React.Component {
   }
 
   handleWiki = () => {
-
     Axios
       .get('/api/wiki', {
         params: { title: this.state.result, lang: this.state.lang }
@@ -99,6 +100,7 @@ class Index extends React.Component {
                   </button>
                 )
               }
+              {this.state.loading && <div className="loader" />}
             </div>
             <div className="col-md-7">
               {

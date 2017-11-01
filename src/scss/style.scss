@@ -326,6 +326,58 @@ footer {
   background-color: $brand;
 }
 
+// loader
+
+.loader {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 130%;
+  left: 50%;
+  background-color: $brand;
+  border-radius: 400px;
+  -webkit-clip-path: polygon(0% 50%, 100% 50%, 100% 100%, 0% 100%);
+  clip-path: polygon(0% 50%, 100% 50%, 100% 100%, 0% 100%);
+  animation: rotate 1s infinite linear;
+  transition: all .25s ease-in-out;
+
+  &:hover {
+    background-color: $brand;
+  }
+
+  &:before {
+    z-index: 1;
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    background-color: #fff;
+    left: 6%;
+    top: 1%;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes load {
+  0% {
+    transform: transform(rotate(0deg));
+  }
+  100% {
+    transform: transform(rotate(360deg));
+  }
+}
+
 @media only screen and (max-width: 840px) {
   .formWrap {
     background-image: url('/assets/towerbridge.jpg');
