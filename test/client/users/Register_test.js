@@ -7,7 +7,7 @@ import RegisterForm from '../../../src/components/auth/RegisterForm';
 
 describe('RegisterForm tests', () => {
 
-  it('should render six input fields', done => {
+  it('should render four input fields', done => {
     const props = {
       user: {
         username: '',
@@ -19,7 +19,7 @@ describe('RegisterForm tests', () => {
     };
 
     const wrapper = shallow(<RegisterForm {...props} />);
-    expect(wrapper.find('input').length).to.equal(6);
+    expect(wrapper.find('input').length).to.equal(4);
     done();
   });
 
@@ -36,7 +36,7 @@ describe('RegisterForm tests', () => {
 
     const wrapper = shallow(<RegisterForm {...props} />);
     expect(wrapper.find({ value: 'test@test.com' }).length).to.equal(1);
-    expect(wrapper.find({ value: 'test' }).length).to.equal(5);
+    expect(wrapper.find({ value: 'test' }).length).to.equal(3);
     done();
   });
 
@@ -57,7 +57,7 @@ describe('RegisterForm tests', () => {
     };
 
     const wrapper = shallow(<RegisterForm {...props} />);
-    expect(wrapper.find('small.has-error').length).to.equal(4);
+    expect(wrapper.find('small.formError').length).to.equal(4);
     done();
   });
 
