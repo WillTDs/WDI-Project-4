@@ -26,7 +26,7 @@ userSchema
   });
 
 userSchema.pre('validate', function checkPassword(next) {
-  if(!this._passwordConfirmation) this.invalidate('passwordConfirmation', 'Password confirmation is required');
+  // if(!this._passwordConfirmation) this.invalidate('passwordConfirmation', 'Password confirmation is required');
   if(this.isModified('password') && this._passwordConfirmation !== this.password) {
     this.invalidate('passwordConfirmation', 'Passwords do not match');
   }

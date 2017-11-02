@@ -12,7 +12,7 @@ function visitedCreate(req, res, next) {
 
       return user.save();
     })
-    .then((user) => res.json(user))
+    .then((user) => res.status(201).json(user)) // TODO: this should be the place
     .catch(next);
 }
 
@@ -27,7 +27,7 @@ function visitedDelete(req, res, next) {
 
       return user.save();
     })
-    .then((user) => res.json(user))
+    .then(() => res.sendStatus(204))
     .catch(next);
 }
 
