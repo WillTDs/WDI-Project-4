@@ -36,12 +36,12 @@ class Visited extends React.Component {
             {this.state.user.places && this.state.user.places.map(place => (
               <div className="showCard" key={place.id}>
                 <div>
-                  <img src="./assets/blackFlag.png" className="showCardIcon" />
+                  <img src="./assets/blackFlag2.png" className="showCardIcon" />
                   {Auth.isAuthenticated() &&
-                  <img src="./assets/delete.png"
+                  <h4
                     className="showDelBtn"
-                    onClick={() => this.deletePlace(place)}>
-                  </img>}
+                    onClick={() => this.deletePlace(place)}>X
+                  </h4>}
                   <h4 className="showCardTitle">{place.title}</h4>
                 </div>
                 <p className="showText">{place.shortExtract}</p>
