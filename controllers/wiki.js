@@ -10,7 +10,7 @@ function wikiProxy(req, res) {
       format: 'json',
       action: 'query',
       prop: 'extracts|langlinks',
-      lllimit: 30,
+      lllimit: 100,
       exintro: '',
       explaintext: '',
       titles: req.query.title

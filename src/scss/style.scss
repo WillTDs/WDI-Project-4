@@ -196,6 +196,8 @@ button {
   margin: 0 auto;
   width: 100%;
   min-width: 290px;
+  text-align: center;
+  padding: 8px 12px;
   border: 1px solid $brand;
   background-color: #fff;
   text-transform: uppercase;
@@ -269,10 +271,10 @@ button {
 }
 
 .showCard {
-  border: 6px solid #4092a1;
+  border: 3px solid #4092a1;
   padding: 25px 20px;
-  background-color: rgba(92, 181, 199, 0.7);
-  border-radius: 5px;
+  background-color: #5cb4c7;
+  border-radius: 3px;
   color: white;
   p {
     margin: 0;

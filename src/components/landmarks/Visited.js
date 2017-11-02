@@ -30,7 +30,7 @@ class Visited extends React.Component {
   render() {
     return(
       <div>
-        <div className="showContainer">
+        <div className="container">
           <h1 className="showTitle">Visited</h1>
           <div>
             {this.state.user.places && this.state.user.places.map(place => (

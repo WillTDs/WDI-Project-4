@@ -47,7 +47,7 @@ class Index extends React.Component {
       .get('/api/wiki', {
         params: { title: this.state.result, lang: this.state.lang }
       })
-      .then(res => this.setState({ wikiResult: res.data }, () => console.log(this.state)))
+      .then(res => this.setState({ wikiResult: res.data }))
       .catch(err => console.log(err));
   }
 
