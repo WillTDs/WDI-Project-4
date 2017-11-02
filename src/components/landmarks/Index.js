@@ -100,11 +100,11 @@ class Index extends React.Component {
                   </button>
                 )
               }
-              {this.state.loading && <div className="loader" />}
+              {this.state.loading &&<div className="loader" />}
             </div>
             <div className="col-md-7">
               {
-                this.state.wikiResult &&
+                this.state.wikiResult.title &&
               <div>
                 <div className="flags">
                   {

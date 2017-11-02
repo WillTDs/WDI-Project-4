@@ -11,10 +11,12 @@ body, input, button {
 
 button {
   padding: 12px;
+  cursor: pointer;
 }
 
 .container {
-  height: 100vh;
+  min-height: 100vh;
+  margin-bottom: 70px;
 }
 
 //home page
@@ -194,7 +196,6 @@ button {
   margin: 0 auto;
   width: 100%;
   min-width: 290px;
-  margin-bottom: 70px;
   border: 1px solid $brand;
   background-color: #fff;
   text-transform: uppercase;
@@ -331,8 +332,8 @@ footer {
 .loader {
   width: 100px;
   height: 100px;
-  position: absolute;
-  top: 130%;
+  position: relative;
+  top: 40px;
   left: 50%;
   background-color: $brand;
   border-radius: 400px;
@@ -393,6 +394,21 @@ footer {
 }
 
 @media only screen and (max-width: 460px) {
+
+  .sendButton {
+    margin-bottom: 8px;
+  }
+
+  .flag {
+    height: 26px;
+    width: 38px;
+  }
+
+  .loader {
+    height: 60px;
+    width: 60px;
+  }
+
   .formWrap {
     background-image: url('/assets/towerbridge.jpg');
     background-size: 100%;
@@ -406,7 +422,22 @@ footer {
   }
 }
 
-@media only screen and (max-height: 550px) {
+@media only screen and (max-height: 560px) {
+
+  .sendButton {
+    margin-bottom: 8px;
+  }
+
+  .flag {
+    height: 26px;
+    width: 38px;
+  }
+
+  .loader {
+    height: 50px;
+    width: 50px;
+  }
+
   .formWrap {
     background-image: url('/assets/towerbridge.jpg');
     background-size: 100%;
